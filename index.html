@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>Arithmetic Operations</title>
+    <script>
+        function calculateSum() {
+            var num1 = document.getElementById('number1').value;
+            var num2 = document.getElementById('number2').value;
+            var sum = parseInt(num1) + parseInt(num2);
+            document.getElementById('result').innerHTML = 'Sum: ' + sum;
+            return false; // to prevent form submission
+        }
+    </script>
+</head>
+<body>
+    <h2>Arithmetic</h2>
+    <form onsubmit="return calculateSum()">
+        <label for="number1">Number 1:</label>
+        <input type="number" id="number1" name="number1"><br><br>
+        <label for="number2">Number 2:</label>
+        <input type="number" id="number2" name="number2"><br><br>
+        <input type="submit" value="Calculate Sum">
+    </form>
+    <p id="result"></p>
+</body>
+</html>
