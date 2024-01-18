@@ -5,9 +5,14 @@
         function calculateSum() {
             var num1 = document.getElementById('number1').value;
             var num2 = document.getElementById('number2').value;
-            var sum = parseInt(num1) + parseInt(num2);
-            document.getElementById('result').innerHTML = 'Sum: ' + sum;
-            return false; // to prevent form submission
+    
+            fetch('http://localhost:3000/addNumbers?a=' + num1 + '&b=' + num2)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('result').innerHTML = 'Sum: ' + data;
+                });
+    
+            return false;
         }
     </script>
 </head>
