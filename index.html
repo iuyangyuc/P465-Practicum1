@@ -1,30 +1,26 @@
 <html>
 <head>
     <title>Arithmetic Operations</title>
-    <script>
-        function calculateSum() {
-            var num1 = document.getElementById('number1').value;
-            var num2 = document.getElementById('number2').value;
-    
-            fetch('http://localhost:3000/addNumbers?a=' + num1 + '&b=' + num2)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('result').innerHTML = 'Sum: ' + data;
-                });
-    
-            return false;
-        }
-    </script>
 </head>
 <body>
-    <h2>Arithmetic</h2>
-    <form onsubmit="return calculateSum()">
-        <label for="number1">Number 1:</label>
-        <input type="number" id="number1" name="number1"><br><br>
-        <label for="number2">Number 2:</label>
-        <input type="number" id="number2" name="number2"><br><br>
-        <input type="submit" value="Calculate Sum">
-    </form>
-    <p id="result"></p>
+    <section>
+        <h2>Arithmetic</h2>
+        <input id = "operand1"/>
+        <label>+</label>
+        <input id = "operand2"/>
+        <button onclick="add()">=</button>
+        <label id = "sum"></label>
+    </section>
+    <script>
+        async function add() {
+            const operand1Input = document.getElementById("operand1");
+            const operand2Input = document.getElementById("operand2");
+            let a = operand1Input.value;
+            let b = operand2Input.value;
+            const response = await fetch('http://localhost:3000/add/' + a + '/' + b);
+            const sum = await response.json();
+            document.getElementById("sum").innerText = sum;
+        }
+    </script>
 </body>
 </html>
