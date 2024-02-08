@@ -5,11 +5,12 @@ on:
 
 jobs:
     build_and_publish:
-        runs—on: ubuntu-latest
+        runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
             - name: Build and push the image
               run: |
-                docker login --username iuyangyuc --password ${{secrets.ACCESSTOKEN}} ghcr.io
-                docker build -t ghcr.io/iuyangyuc/arithmetic-service:latest --file Dockerfile.
-                docker push ghcr.io/iuyangyuc/arithmetic-—service:latest
+                docker login --username iuyangyuc --password ${{secrets.ACCESS_TOKEN}} ghcr.io
+                docker build -t ghcr.io/iuyangyuc/arithmetic-service:latest --file Dockerfile .  
+                docker push ghcr.io/iuyangyuc/arithmetic-service:latest 
+
