@@ -17,7 +17,7 @@
             const operand2Input = document.getElementById("operand2");
             let a = operand1Input.value;
             let b = operand2Input.value;
-            const response = await fetch('http://localhost:3000/add/' + a + '/' + b);
+            const response = await fetch('https://arithmetic-service-6z76.onrender.com/add/' + a + '/' + b);
             const sum = await response.json();
             document.getElementById("sum").innerText = sum;
         }
