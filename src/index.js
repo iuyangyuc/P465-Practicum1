@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { add } = require('./arithmetic');
+const { add } = require('./arithmetica');
 const app = express();
 app.use(cors());
 const port = 3000;
