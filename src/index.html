@@ -25,7 +25,7 @@ async function calculate() {
             let a = operand1Input.value;
             let b = operand2Input.value;
             let operation = operationSelect.value;
-            let url = `https://arithmetic-service-6z76.onrender.com/${operation}/${a}/${b}`;
+            let url = `https://arithmetic-service2.onrender.com/${operation}/${a}/${b}`;
             const response = await fetch(url);
             const result = await response.json();
 
