@@ -4,22 +4,33 @@
 </head>
 <body>
     <section>
-        <h2>Arithmetic</h2>
-        <input id = "operand1"/>
-        <label>+</label>
-        <input id = "operand2"/>
-        <button onclick="add()">=</button>
-        <label id = "sum"></label>
-    </section>
+        <section>
+            <h2>Arithmetic Calculator</h2>
+            <input id="operand1" type="number" step="any"/>
+            <select id="operation">
+                <option value="add">+</option>
+                <option value="subtract">-</option>
+                <option value="multiply">*</option>
+                <option value="divide">/</option>
+            </select>
+            <input id="operand2" type="number" step="any"/>
+            <button onclick="calculate()">=</button>
+            <label id="result"></label>
+        </section>
     <script>
-        async function add() {
+async function calculate() {
             const operand1Input = document.getElementById("operand1");
             const operand2Input = document.getElementById("operand2");
+            const operationSelect = document.getElementById("operation");
             let a = operand1Input.value;
             let b = operand2Input.value;
-            const response = await fetch('https://arithmetic-service-6z76.onrender.com/add/' + a + '/' + b);
-            const sum = await response.json();
-            document.getElementById("sum").innerText = sum;
+            let operation = operationSelect.value;
+
+            let url = `https://arithmetic-service-6z76.onrender.com/${operation}/${a}/${b}`;
+            const response = await fetch(url);
+            const result = await response.json();
+
+            document.getElementById("result").innerText = result;
         }
     </script>
 </body>
