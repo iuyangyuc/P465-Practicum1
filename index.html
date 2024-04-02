@@ -59,7 +59,10 @@
 </div>
 
 
-<script>
+<script src="configuration.js">
+    let host=configuration.host;
+    displayLogin(host);
+
     async function calculate() {
         const operand1Input = document.getElementById("operand1");
         const operand2Input = document.getElementById("operand2");
@@ -76,6 +79,8 @@
     async function isPrime() {
         const numberToTest = document.getElementById("numberToTest");
         let n = numberToTest.value;
+        const headers = {'Authorization': 'Bearer ${configuration.token}'}
+        const response = await fetch('${host.primes_service}/primes/${n}', { headers }');
         const response = await fetch("https://primes-service-latest.onrender.com/prime/" + n);
         const result = await response.json();
         document.getElementById("primeCheckResult").innerText = result;
